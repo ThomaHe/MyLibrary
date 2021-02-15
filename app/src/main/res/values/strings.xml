@@ -7,6 +7,8 @@
     <string name="library_btn">Ma Bibliothèque</string>
     <string name="thumbnail_description">Couverture du livre</string>
     <string name="bookmark_description">Favori</string>
+    <string name="search_page_title">Résultats de la recherche</string>
+    <string name="library_page_title">Ma Bibliothèque</string>
 
     <string name="api_key">AIzaSyBDh3BSclKzwLG_zR1swKmLxRgXNtgopo8</string>
 </resources>
