@@ -9,7 +9,14 @@ class MainPresenter implements MainContract.MainPresenter {
 
     @Override
     public void onSearchButtonClick(String title, String author) {
-        mainView.navigateToSearch(title,author);
+        if ((title==null || title.isEmpty())&&(author==null || author.isEmpty()))
+        {
+            mainView.emptySearch();
+        }
+        else {
+            mainView.navigateToSearch(title, author);
+        }
+
     }
 
     @Override

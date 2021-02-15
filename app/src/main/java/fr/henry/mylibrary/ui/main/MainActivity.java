@@ -2,12 +2,14 @@ package fr.henry.mylibrary.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import fr.henry.mylibrary.R;
+import fr.henry.mylibrary.ui.catalog.CatalogActivity;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MainView {
 
@@ -39,12 +41,27 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     @Override
     public void navigateToSearch(String title, String author) {
-        //TODO navigate to catalog activity with title and author, and a search constant
+        Intent intent = new Intent(this, CatalogActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString(CatalogActivity.TYPE,CatalogActivity.SEARCH);
+        extras.putString(CatalogActivity.TITLE,title);
+        extras.putString(CatalogActivity.AUTHOR,author);
+        intent.putExtras(extras);
+
+        startActivity(intent);
     }
 
     @Override
     public void navigateToLibrary() {
-        //TODO navigate to catalog activity with library constant
+        Intent intent = new Intent(this, CatalogActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString(CatalogActivity.TYPE,CatalogActivity.LIBRARY);
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
+    @Override
+    public void emptySearch(){
+        Toast.makeText(this, "aucune info renseignée", Toast.LENGTH_SHORT);
     }
 
     private void initView(){
