@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyLibrary</string>
+    <string name="app_title">My Library</string>
+    <string name="title_hint">Titre du livre</string>
+    <string name="author_hint">Auteur du livre</string>
+    <string name="search_btn">Rechercher</string>
+    <string name="library_btn">Ma Bibliothèque</string>
 </resources>
