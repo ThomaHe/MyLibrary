@@ -10,5 +10,14 @@
     <string name="search_page_title">Résultats de la recherche</string>
     <string name="library_page_title">Ma Bibliothèque</string>
 
+    <string name="details_page_title">Détails du livre</string>
+    <string name="details_authors">Auteur(s) :</string>
+    <string name="details_publisher">Editeur :</string>
+    <string name="details_date">Date de publication :</string>
+    <string name="details_description">Résumé :</string>
+    <string name="details_preview_btn">Aperçu</string>
+
+
+
     <string name="api_key">AIzaSyBDh3BSclKzwLG_zR1swKmLxRgXNtgopo8</string>
 </resources>

@@ -1,5 +1,7 @@
 package fr.henry.mylibrary.ui.catalog;
 
+import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 import fr.henry.mylibrary.data.Book;
 import fr.henry.mylibrary.network.ApiService;
 import fr.henry.mylibrary.network.response.Response;
+import fr.henry.mylibrary.ui.details.DetailsActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -51,5 +54,18 @@ class CatalogPresenter implements CatalogContract.CatalogPresenter{
     @Override
     public void onDestroy() {
         catView = null;
+    }
+
+    @Override
+    public Bundle createNavigationArguments(Book book) {
+        Bundle extras = new Bundle();
+        extras.putString(DetailsActivity.THUMBNAIL,book.getThumbnail());
+        extras.putString(DetailsActivity.TITLE,book.getTitle());
+        extras.putString(DetailsActivity.AUTHORS,book.getAuthors());
+        extras.putString(DetailsActivity.PUBLISHER,book.getPublisher());
+        extras.putString(DetailsActivity.DATE,book.getPublishedDate());
+        extras.putString(DetailsActivity.DESCRIPTION,book.getDescription());
+        extras.putString(DetailsActivity.PREVIEW,book.getPreviewLink());
+       return extras;
     }
 }

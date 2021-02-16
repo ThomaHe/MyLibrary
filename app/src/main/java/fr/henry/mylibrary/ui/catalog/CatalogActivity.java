@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import fr.henry.mylibrary.R;
 import fr.henry.mylibrary.data.Book;
+import fr.henry.mylibrary.ui.details.DetailsActivity;
 
 public class CatalogActivity extends AppCompatActivity implements CatalogContract.CatalogView, CatalogAdapter.OnItemClickListener{
 
@@ -87,7 +89,11 @@ public class CatalogActivity extends AppCompatActivity implements CatalogContrac
 
     @Override
     public void onItemClick(Book book) {
-        Toast.makeText(getApplicationContext(), "cliqué sur"+book.getTitle(),Toast.LENGTH_SHORT).show();
+        Bundle extras = mCatalogPresenter.createNavigationArguments(book);
+
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 
     @Override

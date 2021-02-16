@@ -1,5 +1,7 @@
 package fr.henry.mylibrary.ui.catalog;
 
+import android.os.Bundle;
+
 import java.util.List;
 
 import fr.henry.mylibrary.data.Book;
@@ -15,6 +17,7 @@ interface CatalogContract {
     interface CatalogPresenter{
         void searchOnline(String title, String author, String key);
         void onDestroy();
+        Bundle createNavigationArguments(Book book);
     }
 
     interface CatalogModel{

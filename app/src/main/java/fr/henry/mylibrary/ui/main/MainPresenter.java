@@ -14,6 +14,12 @@ class MainPresenter implements MainContract.MainPresenter {
             mainView.emptySearch();
         }
         else {
+            if (title != null) {
+                title = title.replaceAll("[^0-9a-zA-Z,._~]+", "");
+            }
+            if (author != null) {
+                author = author.replaceAll("[^0-9a-zA-Z,._~]+", "");
+            }
             mainView.navigateToSearch(title, author);
         }
 
