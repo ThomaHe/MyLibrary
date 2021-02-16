@@ -26,6 +26,11 @@ class CatalogPresenter implements CatalogContract.CatalogPresenter{
 
     @Override
     public void searchOnline(String title, String author, String key) {
+        //L'api ne sait pas faire de recherches sur l'auteur uniquement, elle renvoie de toute façon les livres contenant l'auteur dans le titre
+        if(title.isEmpty()){
+            title=author;
+            author=null;
+        }
         Call<Response> call = ApiService
                 .retrofit
                 .create(ApiService.class)
