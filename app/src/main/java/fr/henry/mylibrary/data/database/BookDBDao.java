@@ -3,6 +3,7 @@ package fr.henry.mylibrary.data.database;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface BookDBDao {
     @Insert
     void insertAll(BookDB... bookDBs);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(BookDB bookDB);
 
     @Delete

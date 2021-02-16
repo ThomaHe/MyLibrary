@@ -18,6 +18,15 @@
     <string name="details_preview_btn">Aperçu</string>
 
 
+    <string name="bookmark_added"> a été ajouté à la bibliotèque</string>
+
+    <string name="delete_bookmark_message">Voulez-vous supprimer ce livre?</string>
+    <string name="ok">Oui</string>
+    <string name="cancel">Annuler</string>
+
+    <string name="empty_library_message">Votre bibliotèque est vide</string>
+    <string name="no_result_message">Aucun résultat pour votre recherche</string>
+
 
     <string name="api_key">AIzaSyBDh3BSclKzwLG_zR1swKmLxRgXNtgopo8</string>
 </resources>

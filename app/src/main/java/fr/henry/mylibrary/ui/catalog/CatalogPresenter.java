@@ -1,10 +1,12 @@
 package fr.henry.mylibrary.ui.catalog;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import fr.henry.mylibrary.data.Book;
 import fr.henry.mylibrary.network.ApiService;
@@ -34,7 +36,7 @@ class CatalogPresenter implements CatalogContract.CatalogPresenter{
             public void onResponse(@Nullable Call<Response> call,
                                    @Nullable retrofit2.Response<Response> response) {
                 if (response != null && response.isSuccessful()) {
-                    if(response.body()!=null && response.body().getItems().size()>0)
+                    if(response.body()!=null && response.body().getItems()!=null)
                         catView.onGetResult(catModel.mapApiToBooks(response.body()));
                     else
                         catView.onNoResult();
@@ -49,6 +51,40 @@ class CatalogPresenter implements CatalogContract.CatalogPresenter{
                 }
             }
         });
+    }
+
+    @Override
+    public void getLibrary() {
+        try{
+            Executors.newSingleThreadExecutor().execute(() -> {
+            List<Book> books = catModel.getAllBooks();
+            catView.onGetResult(books);
+            });
+        } catch (Exception e){
+            Log.e("erreur récupération bibliothèque", String.valueOf(e));
+        }
+    }
+
+    @Override
+    public void addBookmark(Book book) {
+        try{
+            Executors.newSingleThreadExecutor().execute(() -> {
+                catModel.addBookToDatabase(book);
+                catView.onBookmarkAdded(book.getTitle());
+            });
+        } catch (Exception e){
+            Log.e("erreur insert book", String.valueOf(e));
+        }
+    }
+
+    @Override
+    public void deleteBookmark(Book book) {
+        try{
+            Executors.newSingleThreadExecutor().execute(() -> catModel.deleteBook(book));
+            catView.onBookmarkDeleted(book);
+        } catch (Exception e){
+            Log.e("erreur delete book", String.valueOf(e));
+        }
     }
 
     @Override
@@ -68,4 +104,6 @@ class CatalogPresenter implements CatalogContract.CatalogPresenter{
         extras.putString(DetailsActivity.PREVIEW,book.getPreviewLink());
        return extras;
     }
+
+
 }
