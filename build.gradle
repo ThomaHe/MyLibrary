@@ -27,4 +27,5 @@ ext {
     retrofitVersion = "2.9.0"
     glideVersion = "4.11.0"
     okhttpVersion = "4.4.1"
+    roomVersion = "2.2.6"
 }
